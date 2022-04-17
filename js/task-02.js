@@ -9,9 +9,13 @@ const ingredients = [
 
 const listEl = document.querySelector("#ingredients");
 
-ingredients.forEach(elem => {
-  const createItem = document.createElement("li");
-  createItem.classList.add("item");
-  createItem.textContent = elem;
-  listEl.append(createItem);
-})
+const makeItemImageMarkup = elem => {
+  return `
+  <li class="item">${elem}</li>`
+}
+
+const makeMarkup = ingredients.map(makeItemImageMarkup).join("");
+listEl.insertAdjacentHTML("afterbegin", makeMarkup);
+
+
+
