@@ -8,14 +8,13 @@ const ingredients = [
 ];
 
 const listEl = document.querySelector("#ingredients");
+const itemsArr = [];
 
-const makeItemImageMarkup = elem => {
-  return `
-  <li class="item">${elem}</li>`
-}
+ingredients.map(elem => {
+  const createItem = document.createElement("li");
+  createItem.classList.add("item");
+  createItem.textContent = elem;
+  itemsArr.push(createItem);
+});
 
-const makeMarkup = ingredients.map(makeItemImageMarkup).join("");
-listEl.insertAdjacentHTML("afterbegin", makeMarkup);
-
-
-
+listEl.append(...itemsArr);
